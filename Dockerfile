@@ -13,6 +13,12 @@ RUN wget https://github.com/bytecodealliance/wasm-micro-runtime/releases/downloa
 
 RUN git clone https://github.com/bytecodealliance/wasm-micro-runtime.git /wamr
 
+# # Register necessary symbols
+# RUN sed -i "/SymbolMap target_sym_map/a REG_SYM(__muldi3)," /wamr/core/iwasm/aot/arch/aot_reloc_riscv.c
+# RUN sed -i "/SymbolMap target_sym_map/a REG_SYM(__udivdi3)," /wamr/core/iwasm/aot/arch/aot_reloc_riscv.c
+# RUN sed -i "/SymbolMap target_sym_map/a REG_SYM(__umoddi3)," /wamr/core/iwasm/aot/arch/aot_reloc_riscv.c
+# RUN sed -i "/SymbolMap target_sym_map/a REG_SYM(__divdi3)," /wamr/core/iwasm/aot/arch/aot_reloc_riscv.c
+
 RUN mkdir /wamr-build
 WORKDIR /wamr-build
 RUN cmake ../wamr \
