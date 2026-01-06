@@ -23,7 +23,7 @@ gcc -o /usr/local/bin/file2c ./file2c.c
 
 file2c demo.riscv64.wamr wasmModuleBuffer > demo.riscv64.wamr.c
 
-/usr/bin/riscv64-linux-gnu-gcc \
+/opt/riscv-newlib/bin/riscv64-unknown-linux-gnu-gcc \
     -march=rv64gc \
     -mcmodel=medany \
     -static \
