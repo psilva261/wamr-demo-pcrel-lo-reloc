@@ -8,20 +8,9 @@ cd $SCRIPT_DIR
 
 GOOS=wasip1 GOARCH=wasm go build -o demo.wasm
 
-wamrc \
-    --target=riscv64 \
-    --target-abi=lp64 \
-    --cpu=generic-rv64 \
-    --cpu-features='+i,+m,+a' \
-    --opt-level=1 \
-    --size-level=1 \
-    --bounds-checks=1 \
-    -o demo.riscv64.wamr \
-    demo.wasm
-
 gcc -o /usr/local/bin/file2c ./file2c.c
 
-file2c demo.riscv64.wamr wasmModuleBuffer > demo.riscv64.wamr.c
+file2c demo.wasm wasmModuleBuffer > demo.riscv64.wamr.c
 
 /opt/riscv-newlib/bin/riscv64-unknown-linux-gnu-gcc \
     -march=rv64gc \

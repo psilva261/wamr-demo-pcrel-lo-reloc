@@ -47,7 +47,8 @@ RUN cmake ../wamr \
         -DWAMR_BUILD_PLATFORM=linux \
         -DWAMR_BUILD_TARGET=AOT \
         -DWAMR_BUILD_LIBC_BUILTIN=1 \
-        -DWAMR_BUILD_AOT=1 \
+        -DWAMR_BUILD_INTERP=1 \
+        -DWAMR_BUILD_FAST_INTERP=0 \
         -DCMAKE_SYSTEM_PROCESSOR=riscv64 \
         -DWAMR_BUILD_TARGET=RISCV64_LP64 \
         -DCMAKE_C_COMPILER=/opt/riscv-newlib/bin/riscv64-unknown-linux-gnu-gcc \
